@@ -1,9 +1,15 @@
+//creating a redux store 
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counterSlice'
+import loginReducer from './loginSlice'
+
+//Reducers are functions that specify how the application's state changes in response to actions.
+//store is configured with reducers 
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer
+    counter: counterReducer, 
+    login: loginReducer, 
   }
 })
 

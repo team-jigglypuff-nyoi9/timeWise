@@ -1,12 +1,8 @@
 const path = require('path');
 const express = require('express');
-import { Request, Response } from 'express';
-
-type Error = {
-    log: string,
-    status: number,
-    message: string
-}
+import { Request, Response, NextFunction } from 'express';
+import { Error } from './types';
+const scheduleController = require('./controllers/scheduleController');
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +11,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`
+      🙏🙏🙏🙏🙏🙏🙏🙏
+      FLOW CHECK \n
+      URL: ${req.url}\n
+      METHOD: ${req.method}
+      `);
+    return next();
+  });
+
+app.post('/schedule', scheduleController.addSchedule, (req: Request, res: Response)=> {
+    return res.status(200);
+} )
 
 // Catch All Handler
 app.use('*', (req: Request, res: Response) => {
