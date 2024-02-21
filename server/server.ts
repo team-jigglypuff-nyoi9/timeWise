@@ -3,6 +3,7 @@ const express = require('express');
 import { Request, Response, NextFunction } from 'express';
 import { Error } from './types';
 const scheduleController = require('./controllers/scheduleController');
+const authController = require('./controllers/authController');
 
 const app = express();
 const PORT = 3000;
@@ -24,7 +25,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.post('/schedule', scheduleController.addSchedule, (req: Request, res: Response)=> {
     return res.status(200);
-} )
+});
+
+app.post('/login', authController.usernameAndPassword, (req: Request, res: Response) => {
+    return res.status(200);
+})
 
 // Catch All Handler
 app.use('*', (req: Request, res: Response) => {

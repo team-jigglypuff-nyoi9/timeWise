@@ -1,13 +1,10 @@
 import { NextFunction } from "express";
 import { RequestBody } from "../types";
 
-
 const db = require('../models/models.js');
-
 
 const scheduleController = {
     addSchedule: async (req: Request, res: Response, next: NextFunction) => {
-
         try {
             if (req.body && typeof req.body === 'object' && 'schedText' in req.body && 'userId' in req.body) {
                 const reqBody = req.body as RequestBody;
@@ -16,8 +13,9 @@ const scheduleController = {
                     values: [reqBody.schedText, reqBody.userId]
                 };
                 const results = db.query(queryObj);
+                res.locals.addSchedule = results;
+                return next();
             }
-           
         } catch (error) {
             const errObj = {
                 log: 'An unknown error occurred while trying to add a schedule',
@@ -28,6 +26,5 @@ const scheduleController = {
         }
     }
 };
-
 
 module.exports = scheduleController;
