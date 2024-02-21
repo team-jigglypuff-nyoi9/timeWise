@@ -7,31 +7,38 @@ interface task {
     details: string
 }
 interface taskState {
-    tasks: task[]
+    tasks: task[],
+    inputName: string,
+    inputDetails: string
 }
 
 // define our initial state
 const initialState: taskState = {
     tasks: [
         {name: 'hardcoded 1', details: 'hardcoded 1'},
-        {name: 'hardcoded 2', details: 'hardcoded 2'},
-        {name: 'hardcoded 3', details: 'hardcoded 3'}
-    ]
+    ],
+    inputName: '',
+    inputDetails: ''
 }
 
 // create our slice
 export const taskSlice = createSlice({
     name: 'task',
     initialState, // define our intial state to the empty array above
-    reducers:{
+    reducers: {
         // create a reducer to add a task
-        addTask: (state) => {
-            state.tasks.push({name: 'hardcoded name', details: 'hardcoded details'})
+        addTask: (state, action) => {
+            state.tasks.push({name: action.payload.name, details: action.payload.details})
         },
-        // create a reducer to remove a task
+        updateInputName: (state, action) => {
+            state.inputName = action.payload;
+        },
+        updateInputDetails: (state, action) => {
+            state.inputDetails = action.payload;
+        },
     }
 })
 
 // export our reducers
-export const { addTask } = taskSlice.actions;
+export const { addTask, updateInputDetails, updateInputName } = taskSlice.actions;
 export default taskSlice.reducer;
