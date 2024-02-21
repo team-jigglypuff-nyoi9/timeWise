@@ -12,13 +12,15 @@ export default function Board(): React.ReactElement {
   const items = useAppSelector((state) => state.task.tasks);
   // render our items to the screen
   const renderedTasks: React.JSX.Element[] = [];
+  const uniqueIds: string[] = []
   for(let i = 0; i < items.length; i++){
-    renderedTasks.push(<Item key={`item-${i}`} name={items[i].name} details={items[i].details} />)
+    renderedTasks.push(<Item key={`item-${i}`} id={`item-${i}`} name={items[i].name} details={items[i].details} />)
+    uniqueIds.push(`item-${i}`)
   }
 
   return (
     <div className="Board">
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+      <SortableContext items={uniqueIds} strategy={verticalListSortingStrategy}>
         {renderedTasks}
       </SortableContext >
     </div>

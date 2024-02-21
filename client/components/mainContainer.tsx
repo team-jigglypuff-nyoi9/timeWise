@@ -8,7 +8,6 @@ import { DndContext, closestCenter } from '@dnd-kit/core';
 import { useAppSelector } from '../redux/hooks'
 
 export default function MainContainer():React.JSX.Element {
-  
   return (
     <div className="maincontainer">
         <Board /> 
