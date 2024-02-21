@@ -36,11 +36,12 @@ body {
 
 .todo-item {
     background-color: rgb(216, 105, 105);
-    width: fit-content;
-    height: fit-content;
+    width: 9rem;
+    height: 3rem;
     padding: 10px;
     border: 2px solid rgb(53, 53, 53);
     border-radius: 5px;
+    overflow: auto;
 }
 
 .itemcreater-bar {
