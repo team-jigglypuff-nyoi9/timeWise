@@ -1,18 +1,21 @@
 import { NextFunction } from "express";
-import { RequestBody } from "../types";
+import { RequestBody, LoginResponse } from "../types";
 
 const db = require('../models/models.js');
 
 const authController = {
-    usernameAndPassword: async (req: Request, res: Response, next: NextFunction) => {
+    usernameAndPassword: async (req: Request, res: LoginResponse, next: NextFunction) => {
         try {
             if (req.body && typeof req.body === 'object' && 'username' in req.body && 'password' in req.body) {
                 const reqBody = req.body as RequestBody;
                 const queryObj = {
-                    text: `INSERT into Users (user_id, ) VALUES ($1, $2)`,
-                    values: [reqBody.user_id, reqBody.]
+                    text: `INSERT into Users (user_id, ) VALUES ($1)`,
+                    values: [reqBody.userId]
                 };
                 const results = db.query(queryObj);
+                res.locals.loginSuccessful = results;
+                res.cookie('token', req.body.username);
+                return next();
             }
         } catch (error) {
             const errObj = {

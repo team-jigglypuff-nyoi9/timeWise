@@ -1,10 +1,10 @@
 import { NextFunction } from "express";
-import { RequestBody } from "../types";
+import { RequestBody, ScheduleResponse } from "../types";
 
 const db = require('../models/models.js');
 
 const scheduleController = {
-    addSchedule: async (req: Request, res: Response, next: NextFunction) => {
+    addSchedule: async (req: Request, res: ScheduleResponse, next: NextFunction) => {
         try {
             if (req.body && typeof req.body === 'object' && 'schedText' in req.body && 'userId' in req.body) {
                 const reqBody = req.body as RequestBody;

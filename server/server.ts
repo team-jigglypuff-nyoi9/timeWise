@@ -1,7 +1,9 @@
 const path = require('path');
 const express = require('express');
+
 import { Request, Response, NextFunction } from 'express';
 import { Error } from './types';
+
 const scheduleController = require('./controllers/scheduleController');
 const authController = require('./controllers/authController');
 
@@ -24,11 +26,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
 
 app.post('/schedule', scheduleController.addSchedule, (req: Request, res: Response)=> {
-    return res.status(200);
+    return res.status(200).json(res.locals.addSchedule);
 });
 
 app.post('/login', authController.usernameAndPassword, (req: Request, res: Response) => {
-    return res.status(200);
+    return res.status(200).json(res.locals.loginSuccessful);
 })
 
 // Catch All Handler
