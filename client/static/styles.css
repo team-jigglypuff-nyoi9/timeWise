@@ -34,6 +34,11 @@ body {
     border: 3px solid black;
 }
 
+.Board {
+    width: 100%;
+    height: 100%;
+}
+
 .todo-item {
     background-color: rgb(216, 105, 105);
     width: 9rem;
