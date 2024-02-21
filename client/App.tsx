@@ -1,7 +1,10 @@
 import React from 'react';
+import MainContainer from './components/mainContainer'
 
 export default function App():React.JSX.Element {
   return (
-    <div>Hello World</ div>
+    <div className="app">
+      <MainContainer />      
+    </div>
   );
 }
