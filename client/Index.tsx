@@ -6,6 +6,7 @@ import { store } from './redux/store'
 import { Provider } from 'react-redux';
 import './static/styles.css';
 
+
 // the exclamation point at the end is intentional here, it asserts that the value is not null 
 // or undefined, allowing TypeScript to compile the code without type errors. This is useful when 
 // you are certain an element exists in the DOM, but TypeScript's static analysis cannot infer
