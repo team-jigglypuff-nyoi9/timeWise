@@ -5,7 +5,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
 
-export default function Item({ text, id }: ItemPropsprops: any):React.JSX.Element {
+export default function Item({ text, id }: any):React.JSX.Element {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({id});
   const style = {
     transition,
