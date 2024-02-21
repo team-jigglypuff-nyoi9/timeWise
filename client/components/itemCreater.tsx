@@ -26,7 +26,6 @@ export default function ItemCreater():React.JSX.Element {
     //update our state to clear out the input forms
     dispatch(updateInputName(''));
     dispatch(updateInputDetails(''))
-    // also clear the input forms 
   }
   
   function submitSchedule(): void {
