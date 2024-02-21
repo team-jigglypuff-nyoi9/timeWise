@@ -3,7 +3,6 @@ import Item from './item';
 import ItemCreater from './itemCreater';
 import { useAppSelector } from '../redux/hooks'
 
-
 export default function MainContainer():React.JSX.Element {
   // get our items from our redux store
   const items = useAppSelector((state) => state.task.tasks);
