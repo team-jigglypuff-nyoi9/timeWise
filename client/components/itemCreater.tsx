@@ -1,8 +1,13 @@
 import React from 'react';
+import { addTask } from '../redux/taskSlice'
 
 export default function ItemCreater():React.JSX.Element {
   function addTask(): void {
     console.log('addTask invoked')
+    // get the data in the two inputs
+    
+    // add a new task to the redux store
+
   }
   
   function submitSchedule(): void {

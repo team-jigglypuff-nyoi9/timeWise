@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Item():React.JSX.Element {
+export default function Item(props: any):React.JSX.Element {
   return (
     <div className="todo-item">
-      <div>name of item</div>
-      <div>details</div>
+      <div>{props.name}</div>
+      <div>{props.details}</div>
     </ div>
   );
 }
